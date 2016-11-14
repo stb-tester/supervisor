@@ -339,6 +339,12 @@ def getLogger(filename, level, fmt, rotating=False, maxbytes=0, backups=0,
     elif filename == 'syslog':
         handlers.append(SyslogHandler())
 
+    elif filename == 'stdout':
+        handlers.append(StreamHandler(sys.stdout))
+
+    elif filename == 'stderr':
+        handlers.append(StreamHandler(sys.stderr))
+
     else:
         if rotating is False:
             handlers.append(FileHandler(filename))
